@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=build /app/target/SimpleJavaProject-1.0-SNAPSHOT.jar /app/app.jar
 
 # Expose the port (if your Java app runs on a specific port)
-EXPOSE 9090
+EXPOSE 8080
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

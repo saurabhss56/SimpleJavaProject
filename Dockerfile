@@ -5,10 +5,10 @@ FROM maven:3.8.6-openjdk-11-slim AS build
 WORKDIR /app
 
 # Copy the pom.xml and source code into the container
-COPY pom.xml .
+COPY pom.xml . 
 COPY src ./src
 
-# Build the application
+# Build the application and skip tests for faster builds
 RUN mvn clean install -DskipTests
 
 # Stage 2: Run the application
@@ -18,11 +18,10 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the built jar file from the build stage
-COPY target/SimpleJavaProject-1.0-SNAPSHOT.jar /app/app.jar
+COPY --from=build /app/target/SimpleJavaProject-1.0-SNAPSHOT.jar /app/app.jar
 
 # Expose the port (if your Java app runs on a specific port)
 EXPOSE 8080
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
-

@@ -18,7 +18,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the built jar file from the build stage
-COPY /app/target/SimpleJavaProject-1.0-SNAPSHOT.jar /app/app.jar
+COPY target/SimpleJavaProject-1.0-SNAPSHOT.jar /app/app.jar
 
 # Expose the port (if your Java app runs on a specific port)
 EXPOSE 8080

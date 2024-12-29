@@ -5,11 +5,14 @@ FROM maven:3.8.6-openjdk-11-slim AS build
 WORKDIR /app
 
 # Copy the pom.xml and source code into the container
-COPY pom.xml . 
+COPY pom.xml .
 COPY src ./src
 
 # Build the application and skip tests for faster builds
 RUN mvn clean install -DskipTests
+
+# List the files in the target directory for debugging
+RUN ls -l /app/target
 
 # Stage 2: Run the application
 FROM openjdk:11-jre-slim

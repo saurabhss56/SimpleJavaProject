@@ -4,17 +4,40 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>  <!-- Replace with your groupId -->
-    <artifactId>simple-java-project</artifactId>  <!-- Replace with your artifactId -->
-    <version>1.0-SNAPSHOT</version>  <!-- Replace with your version -->
+    <groupId>com.example</groupId>
+    <artifactId>simple-java-project</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- Your dependencies go here -->
+        <!-- Add dependencies here, if needed -->
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Your plugin configurations go here -->
+            <!-- Compiler plugin for Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>  <!-- Java source version -->
+                    <target>11</target>  <!-- Java target version -->
+                </configuration>
+            </plugin>
+
+            <!-- Jar plugin to package the application -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.Main</mainClass> <!-- Replace with your main class -->
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
